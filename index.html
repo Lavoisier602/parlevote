@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PARLEVOTE — Les votes parlementaires</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f2f4f7;
+  color: #182230;
+}
+header {
+  background: #172b4d;
+  color: white;
+  padding: 35px 8%;
+}
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+.logo span { color: #f0b84b; }
+header h1 {
+  font-size: 42px;
+  margin: 55px 0 15px;
+}
+header p {
+  max-width: 650px;
+  line-height: 1.6;
+  color: #d9e2ed;
+}
+main {
+  max-width: 1100px;
+  margin: 35px auto;
+  padding: 0 20px;
+}
+.notice {
+  background: #fff4d9;
+  border: 1px solid #e6c77e;
+  padding: 16px;
+  border-radius: 9px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+.panel {
+  background: white;
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  padding: 22px;
+}
+h2 { margin-top: 0; }
+.filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 15px;
+}
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+input, select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: white;
+  font-size: 14px;
+}
+button {
+  margin-top: 18px;
+  padding: 12px 20px;
+  background: #172b4d;
+  color: white;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+}
+button:hover { background: #29466f; }
+.results {
+  margin-top: 25px;
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+th, td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid #e5eaf0;
+}
+th {
+  font-size: 12px;
+  color: #64748b;
+  text-transform: uppercase;
+}
+.empty {
+  text-align: center;
+  padding: 30px;
+  color: #64748b;
+}
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #64748b;
+  font-size: 13px;
+}
+@media(max-width:650px) {
+  header h1 { font-size: 32px; }
+  .filters { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">PARLE<span>VOTE</span></div>
+  <h1>Qui a voté quoi à l’Assemblée ?</h1>
+  <p>
+    Explorez les votes des députés français, retrouvez les scrutins
+    parlementaires et comprenez l'évolution des positions politiques
+    depuis le début de la Ve République.
+  </p>
+</header>
+
+<main>
+
+<div class="notice">
+  <strong>Projet en construction</strong><br>
+  Les données officielles ne sont pas encore intégrées.
+  Aucun résultat de vote n'est affiché pour le moment.
+  Les données devront être vérifiées et reliées à leurs sources.
+</div>
+
+<section class="panel">
+  <h2>Explorer les votes</h2>
+  <div class="filters">
+    <div>
+      <label for="search">Député ou scrutin</label>
+      <input id="search" placeholder="Nom, texte de loi, sujet...">
+    </div>
+    <div>
+      <label for="year">Année</label>
+      <select id="year">
+        <option value="">Toutes les années</option>
+        <option>1958</option>
+        <option>1960</option>
+        <option>1970</option>
+        <option>1980</option>
+        <option>1990</option>
+        <option>2000</option>
+        <option>2010</option>
+        <option>2020</option>
+      </select>
+    </div>
+    <div>
+      <label for="position">Position</label>
+      <select id="position">
+        <option value="">Toutes</option>
+        <option>Pour</option>
+        <option>Contre</option>
+        <option>Abstention</option>
+      </select>
+    </div>
+  </div>
+  <button onclick="rechercher()">Rechercher</button>
+</section>
+
+<section class="panel results">
+  <h2>Résultats</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Scrutin</th>
+        <th>Député</th>
+        <th>Groupe</th>
+        <th>Vote</th>
+      </tr>
+    </thead>
+    <tbody id="resultats">
+      <tr>
+        <td colspan="5" class="empty">
+          Les archives parlementaires seront intégrées ici.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+</main>
+
+<footer>
+  PARLEVOTE — Projet indépendant d'information civique.
+  Les données définitives renverront à leurs sources officielles.
+</footer>
+
+<script>
+function rechercher() {
+  document.getElementById("resultats").innerHTML = `
+    <tr>
+      <td colspan="5" class="empty">
+        Aucune donnée officielle n'est encore intégrée.
+      </td>
+    </tr>
+  `;
+}
+</script>
+
+</body>
+</html>
